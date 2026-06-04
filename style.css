@@ -1,0 +1,12 @@
+/* Extracted from r 7.html */
+body { font-family: 'Inter', sans-serif; background-color: #f1f5f8; color: #24272c; }
+.nav-shadow { box-shadow: 0 2px 4px 0 rgba(0,0,0,.08); }
+.bd-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.bd-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px 0 rgba(0,0,0,.12); }
+.tab-btn { border-bottom: 3px solid transparent; padding-bottom: 8px; transition: all 0.2s ease; cursor: pointer; color: #94a3b8; }
+.tab-btn.active { border-bottom: 3px solid #f97316; color: #f97316; font-weight: 600; }
+.thumb-border.active { border-color: #f97316; box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2); }
+.star-icon { transition: transform 0.15s ease, color 0.15s ease; }
+.star-icon:hover { transform: scale(1.2); }
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

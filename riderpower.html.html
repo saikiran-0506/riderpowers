@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIDERPOWER • Smart Energy Solutions & Technical Specifications</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="relative">
+
+  <header class="bg-white sticky top-0 z-50 nav-shadow">
+    <div class="border-b border-gray-100 hidden md:block bg-slate-50 text-xs text-gray-500 py-2 px-6">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div>India's Smart EV & Energy Portal</div>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-orange-500"><i class="fa-solid fa-location-dot text-orange-500 mr-1"></i> Plot#189, IDA Cherlapally Phase-II, Hyderabad - 500051, Telangana</a>
+          <a href="#" class="hover:text-orange-500">Login / Register</a>
+        </div>
+      </div>
+    </div>
+    
+    <nav class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      
+      <div class="flex items-center cursor-pointer" onclick="navigateToHome()">
+        <img src="Screenshot 2026-06-03 140854.png" alt="SAALVIS Logo" class="h-16 md:h-20 w-auto object-contain">
+      </div>
+
+      <nav class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-2 cursor-pointer" onclick="navigateToHome()">
+        <span class="text-2xl font-black tracking-tight text-slate-800">RIDER<span class="text-orange-500">POWER</span></span>
+      </div>
+      
+      <!-- Global Search Input with multi-space tolerance handling -->
+      <div class="hidden md:flex flex-1 max-w-xl mx-4 relative">
+        <input type="text" id="globalSearchBarInput" onkeyup="handleSearchKeyup(event)" placeholder="Try '  e  bike  ', 'cruiser bike'..." class="w-full bg-slate-100 border border-slate-200 pl-4 pr-12 py-2.5 rounded-md text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition-all text-slate-900">
+        <button onclick="executeGlobalQuerySearch()" class="absolute right-0 top-0 h-full px-4 bg-orange-500 text-white rounded-r-md hover:bg-orange-600 transition-colors"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+
+      <div class="hidden lg:flex gap-6 text-sm font-semibold text-slate-700">
+        <a href="#home" onclick="navigateToHome()" class="hover:text-orange-500">Home</a>
+        <a href="#vehicles" onclick="navigateToHome()" class="hover:text-orange-500">Products Lineup</a>
+        <a href="#contact" class="hover:text-orange-500">Contact Us</a>
+      </div>
+
+      <button onclick="openQuoteModal()" class="px-5 py-2.5 bg-orange-500 text-white text-sm font-bold rounded hover:bg-orange-600 transition-colors uppercase tracking-wider shadow-sm">
+        Get Quotes
+      </button>
+    </nav>
+  </header>
+
+  <div id="mainPortalPage">
+    <section id="home" class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-16 px-4 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 items-center relative z-10">
+        <div class="md:col-span-7 space-y-4">
+          <span class="bg-orange-500/20 text-orange-400 border border-orange-500/30 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">2026 EV Lineup</span>
+          <h1 class="text-4xl md:text-5xl font-black tracking-tight leading-tight">Find The Right Ride <br class="hidden md:inline">For Your Smart Commute</h1>
+          <p class="text-slate-300 text-base md:text-lg max-w-xl">Compare technical parameters, check configurations, and discover high efficiency infrastructure packages.</p>
+        </div>
+        
+        <div class="md:col-span-5 bg-white text-slate-900 rounded-lg p-6 shadow-xl border border-slate-100">
+          <h3 class="text-lg font-bold text-slate-800 border-b border-slate-100 pb-3 mb-4"><i class="fa-solid fa-sliders text-orange-500 mr-2"></i>Find your perfect vehicle</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="text-xs font-bold uppercase text-gray-500 tracking-wider">Select Vehicle Type</label>
+              <select id="filterType" class="w-full mt-1 border border-slate-200 bg-slate-50 p-2.5 text-sm rounded focus:outline-orange-500">
+                <option value="all">Show All Lineup</option>
+                <option value="ev">Electric Vehicles</option>
+                <option value="energy">Energy & Infrastructure</option>
+              </select>
+            </div>
+            <button onclick="executeQuickSearch()" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded transition-colors text-sm uppercase mt-2 shadow-md">Search Portfolio</button>
+          </div>
+        </div>
+      </div>
+      <div class="absolute right-0 top-0 bottom-0 opacity-15 pointer-events-none hidden lg:block">
+        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80" class="h-full w-full object-cover">
+      </div>
+    </section>
+
+    <main id="vehicles" class="max-w-7xl mx-auto px-4 py-12">
+      <div class="border-b border-slate-200 pb-4 mb-8 flex flex-col sm:flex-row justify-between sm:items-end gap-2">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" id="catalogTitleText">Trending Lineup Products</h2>
+          <p class="text-xs text-slate-500 mt-1">Select a model card to open its dedicated individual specifications page</p>
+        </div>
+        <div id="searchFilterBadgeWrapper" class="hidden">
+          <button onclick="clearActiveSearchFilters()" class="text-xs font-semibold bg-orange-50 border border-orange-200 text-orange-600 rounded-full px-3 py-1.5 flex items-center gap-1.5 hover:bg-orange-100 transition-colors">
+            <span id="searchFilterBadgeText">Filtered Result</span> <i class="fa-solid fa-circle-xmark text-[11px] opacity-70"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4" id="catalogGrid"></div>
+    </main>
+  </div>
+
+
+  <div id="individualProductPage" class="hidden min-h-screen py-10 px-4">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-xs font-medium text-slate-500 mb-6 flex items-center gap-2">
+        <span class="cursor-pointer hover:text-orange-500 transition-colors" onclick="navigateToHome()">Home</span>
+        <i class="fa-solid fa-angle-right text-[10px] text-slate-300"></i>
+        <span class="cursor-pointer hover:text-orange-500 transition-colors capitalize" id="breadcrumbType" onclick="navigateToCategoryFromBreadcrumb()">Product Category</span>
+        <i class="fa-solid fa-angle-right text-[10px] text-slate-300"></i>
+        <span class="text-slate-900 font-bold truncate max-w-[200px] sm:max-w-none" id="breadcrumbName">Current Model</span>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-start bg-white rounded-lg border border-slate-200 p-6 shadow-sm">
+        
+        <div class="lg:col-span-6 space-y-4">
+          <div class="bg-slate-50 border border-slate-100 rounded-lg p-4 flex items-center justify-center min-h-[350px]">
+            <img id="detailImage" src="" alt="" class="max-h-[340px] object-contain mx-auto transition-all duration-200">
+          </div>
+          <div class="grid grid-cols-4 gap-2" id="detailThumbnailContainer"></div>
+        </div>
+
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <span class="bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded" id="detailBadge">Lineup</span>
+            <h1 class="text-3xl font-black text-slate-900 mt-3 tracking-tight" id="detailTitle">Product Model Title</h1>
+            <p class="text-sm text-slate-500 mt-2" id="detailDescription">Overview text goes here description statement.</p>
+          </div>
+
+          <div class="border-b border-slate-200 flex gap-6 text-sm">
+            <button onclick="switchProductTab('specs')" id="tabBtn-specs" class="tab-btn active"><i class="fa-solid fa-circle-info mr-1.5"></i>Technical Parameters</button>
+            <button onclick="switchProductTab('reviews')" id="tabBtn-reviews" class="tab-btn"><i class="fa-solid fa-star mr-1.5"></i>Expert Review</button>
+            <button onclick="switchProductTab('images')" id="tabBtn-images" class="tab-btn"><i class="fa-solid fa-images mr-1.5"></i>User Images</button>
+          </div>
+
+          <div id="detailSpecsTable" class="tab-content-panel"></div>
+
+          <div id="detailReviewsPanel" class="tab-content-panel hidden space-y-4">
+            <div id="reviewsList" class="space-y-3 max-h-[220px] overflow-y-auto pr-1"></div>
+            <form id="reviewForm" onsubmit="submitUserReview(event)" class="bg-slate-50 p-4 border border-slate-200 rounded-md space-y-3">
+              <h4 class="text-xs font-bold uppercase text-slate-700 tracking-wider">Submit Expert / Field Review</h4>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 items-center">
+                <input id="revName" type="text" required placeholder="Your Name / Credential" class="bg-white border border-slate-300 rounded p-2.5 text-xs text-slate-900 focus:outline-none focus:border-orange-500">
+                
+                <div class="flex flex-col text-left">
+                  <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wide mb-1">Select Rating Score</span>
+                  <div class="flex items-center gap-1.5">
+                    <div class="flex items-center text-slate-300 text-lg">
+                      <i class="fa-solid fa-star cursor-pointer star-icon text-orange-500" onclick="setFormStarScore(1)" onmouseover="highlightStarsPreview(1)" onmouseout="resetStarsDisplay()" id="inputStar-1"></i>
+                      <i class="fa-solid fa-star cursor-pointer star-icon text-orange-500" onclick="setFormStarScore(2)" onmouseover="highlightStarsPreview(2)" onmouseout="resetStarsDisplay()" id="inputStar-2"></i>
+                      <i class="fa-solid fa-star cursor-pointer star-icon text-orange-500" onclick="setFormStarScore(3)" onmouseover="highlightStarsPreview(3)" onmouseout="resetStarsDisplay()" id="inputStar-3"></i>
+                      <i class="fa-solid fa-star cursor-pointer star-icon text-orange-500" onclick="setFormStarScore(4)" onmouseover="highlightStarsPreview(4)" onmouseout="resetStarsDisplay()" id="inputStar-4"></i>
+                      <i class="fa-solid fa-star cursor-pointer star-icon text-orange-500" onclick="setFormStarScore(5)" onmouseover="highlightStarsPreview(5)" onmouseout="resetStarsDisplay()" id="inputStar-5"></i>
+                    </div>
+                    <span id="starRatingLabel" class="text-xs font-bold text-orange-500 ml-1">5 Stars</span>
+                    <input type="hidden" id="revRatingHiddenValue" value="5">
+                  </div>
+                </div>
+              </div>
+
+              <textarea id="revComment" required rows="2" placeholder="Write parameters assessment commentary..." class="w-full bg-white border border-slate-300 rounded p-2 text-xs focus:outline-none focus:border-orange-500"></textarea>
+              <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 rounded text-[11px] uppercase tracking-wider transition-all shadow-sm">Post Review Verification</button>
+            </form>
+          </div>
+
+          <div id="detailImagesPanel" class="tab-content-panel hidden space-y-4">
+            <div id="userImagesGrid" class="grid grid-cols-4 gap-2"></div>
+            <div class="bg-slate-50 p-4 border border-slate-200 rounded-md space-y-3">
+              <h4 class="text-xs font-bold uppercase text-slate-700 tracking-wider">Upload Field Asset Images For This Model</h4>
+              <div class="flex items-center justify-center w-full">
+                <label class="flex flex-col items-center justify-center w-full h-24 border-2 border-slate-300 border-dashed rounded-md cursor-pointer bg-white hover:bg-slate-50 transition-colors">
+                  <div class="flex flex-col items-center justify-center pt-3 pb-4">
+                    <i class="fa-solid fa-cloud-arrow-up text-slate-400 text-xl mb-1"></i>
+                    <p class="text-[11px] text-slate-500"><span class="font-semibold text-orange-500">Click to upload</span> to this specific model</p>
+                    <p class="text-[9px] text-slate-400">Images remain bound directly inside this view layout panel</p>
+                  </div>
+                  <input type="file" id="userImageUploadInput" accept="image/*" class="hidden" onchange="handleUserImageUpload(event)" />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <a href="https://wa.me/919010989127?text=I%20am%20interested%20in%20product%20details" target="_blank" class="flex items-center justify-center gap-2 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded uppercase tracking-wider transition-colors shadow-sm">
+              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Support
+            </a>
+            <a href="mailto:riderpower@gmail.com?subject=Product%20Specification%20Inquiry" class="flex items-center justify-center gap-2 py-3 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded uppercase tracking-wider transition-colors shadow-sm">
+              <i class="fa-solid fa-envelope text-sm"></i> Email Inquiry
+            </a>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-md p-4 flex flex-col sm:flex-row gap-3">
+            <button onclick="navigateToHome()" class="flex-1 py-3.5 border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-bold text-sm rounded transition-colors uppercase tracking-wider">
+              <i class="fa-solid fa-arrow-left-long mr-2"></i>Back to Catalog
+            </button>
+            <button onclick="openProductQuote()" class="flex-1 py-3.5 bg-orange-500 hover:bg-orange-600 text-white font-bold text-sm rounded transition-colors uppercase tracking-wider text-center shadow-md">
+              Request Price Quote
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <section id="contact" class="bg-white border-t border-slate-200 py-16 mt-12">
+    <div class="max-w-xl mx-auto px-4 text-center">
+      <div class="w-12 h-12 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center mx-auto text-xl mb-4">
+        <i class="fa-solid fa-headset"></i>
+      </div>
+      <h2 class="text-2xl font-black text-slate-900 tracking-tight">Looking for Custom Solutions?</h2>
+      <p class="text-sm text-slate-500 mt-2 mb-6">Drop your contact number or requirements to receive exact pricing estimates, localized bulk freight charges, and timeline updates.</p>
+      
+      <div class="flex flex-wrap justify-center gap-4 mb-8 text-xs font-bold uppercase tracking-wider">
+        <a href="https://wa.me/919010989127" target="_blank" class="text-emerald-600 hover:text-emerald-700 flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-4 py-2 rounded">
+          <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp: +91 90109 89127
+        </a>
+        <a href="mailto:riderpower@gmail.com" class="text-slate-700 hover:text-slate-900 flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-4 py-2 rounded">
+          <i class="fa-solid fa-envelope text-sm"></i> Email:riderpower@gmail.com
+        </a>
+      </div>
+
+      <div id="footerFormWrapper" class="max-w-md mx-auto min-h-[60px] transition-all duration-300">
+        <form id="footerForm" onsubmit="submitFooterContact(event)" class="flex flex-col sm:flex-row gap-3 shadow-sm">
+          <input type="text" id="footerContactInput" required placeholder="Enter Mobile Number or Email ID" class="w-full bg-slate-50 text-slate-900 border border-slate-300 px-4 py-3 text-sm rounded focus:outline-none focus:border-orange-500 focus:bg-white transition-all">
+          <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded text-sm uppercase tracking-wide whitespace-nowrap transition-colors">Contact Me</button>
+        </form>
+
+        <div id="footerSuccessState" class="hidden bg-emerald-50 border border-emerald-200 rounded-lg p-4 text-left flex items-start gap-3 shadow-sm">
+          <div class="text-emerald-600 text-xl mt-0.5"><i class="fa-solid fa-circle-check"></i></div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-sm">Registration Complete!</h4>
+            <p class="text-xs text-slate-600 mt-1">
+              Your contact pointer (<span id="footerSuccessData" class="font-semibold text-emerald-700"></span>) has been saved securely inside our routing matrix. Our deployment team will reach out shortly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-slate-900 text-slate-400 text-xs py-8 px-4 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <p>&copy; 2026 VoltForge Solutions Private Limited. All platform structures match international automotive deployment regulations.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-white">Privacy Policy</a>
+        <a href="#" class="hover:text-white">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Interactive Quote Modal Component -->
+  <div id="quoteModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-4 transition-all">
+    <div class="bg-white rounded-lg border border-slate-200 shadow-2xl max-w-md w-full overflow-hidden transform scale-95 transition-transform duration-200" id="modalCard">
+      
+      <div id="formContainer">
+        <div class="bg-slate-900 text-white p-4 flex justify-between items-center">
+          <h3 class="font-bold text-sm tracking-wide uppercase"><i class="fa-solid fa-file-invoice-dollar text-orange-500 mr-2"></i>Request Price Quote</h3>
+          <button onclick="closeQuoteModal()" class="text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <form id="quoteForm" onsubmit="handleQuoteSubmit(event)" class="p-6 space-y-4 text-left">
+          <div>
+            <label class="block text-xs font-bold uppercase text-gray-500 tracking-wider mb-1">Selected Product/System</label>
+            <select id="modalProductSelector" class="w-full border border-slate-300 bg-slate-50 p-2.5 text-sm rounded focus:outline-none focus:border-orange-500 focus:bg-white font-medium text-slate-800">
+              <option value="General Consultation">General Lineup Consultation</option>
+              <option value="cruiser-bike">Riderpower Cruiser Electric Bike</option>
+              <option value="smart-e-cycle">Riderpower Urban Smart E-Cycle</option>
+              <option value="lithium-pack">E-Bike Lithium Battery Modules</option>
+              <option value="led-lights">Advanced LED Lights</option>
+              <option value="solar-lights">Integrated Solar Street Infrastructure</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-gray-500 tracking-wider mb-1">Full Name</label>
+            <input type="text" required placeholder="Enter your name" class="w-full border border-slate-300 bg-slate-50 p-2.5 text-sm rounded focus:outline-none focus:border-orange-500 focus:bg-white text-slate-900">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-gray-500 tracking-wider mb-1">Contact Details</label>
+            <input type="text" required placeholder="Mobile Number or Email ID" class="w-full border border-slate-300 bg-slate-50 p-2.5 text-sm rounded focus:outline-none focus:border-orange-500 focus:bg-white text-slate-900">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-gray-500 tracking-wider mb-1">Estimated Order Quantity</label>
+            <input type="number" min="1" value="1" class="w-full border border-slate-300 bg-slate-50 p-2.5 text-sm rounded focus:outline-none focus:border-orange-500 focus:bg-white text-slate-900">
+          </div>
+          <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded transition-colors text-xs uppercase tracking-wider shadow-md">
+            Submit Quote Request
+          </button>
+        </form>
+      </div>
+
+      <div id="successContainer" class="hidden p-8 text-center space-y-5 bg-white">
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-xl font-black text-slate-900">Thank you for your interest!</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Your quotation request for <span id="successProductTarget" class="font-bold text-orange-500"></span> has been logged successfully.
+          </p>
+          <p class="text-xs text-slate-400">
+            A localized freight specialist will connect with you via mobile/email shortly.
+          </p>
+        </div>
+        <button onclick="closeQuoteModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded text-xs uppercase tracking-wider transition-colors shadow-sm">
+          Acknowledge & Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Full Screen Image Lightbox Modal -->
+  <div id="imageLightboxModal" class="hidden fixed inset-0 z-[100] bg-black/90 flex justify-center items-center backdrop-blur-sm transition-opacity duration-300">
+      <!-- Close Button -->
+      <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-orange-500 text-5xl font-light cursor-pointer z-[110] transition-colors">
+          &times;
+      </button>
+      <!-- Full Size Image -->
+      <img id="lightboxImage" src="" alt="Full Screen Product" class="max-w-[95vw] max-h-[90vh] object-contain rounded-md shadow-2xl">
+  </div>
+
+  <!-- External JS -->
+  <script src="script.js"></script>
+</body>
+</html>
